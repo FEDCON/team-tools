@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Claude Cowork Cheatsheet - FEDCON</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro', sans-serif;
+            background: #1a1a2e;
+            color: #eee;
+            padding: 15px;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+        h1 { font-size: 16px; color: #a78bfa; margin-bottom: 10px; }
+        h2 { font-size: 13px; color: #60a5fa; margin: 12px 0 6px 0; border-bottom: 1px solid #333; padding-bottom: 3px; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 8px; }
+        td, th { padding: 4px 8px; text-align: left; border-bottom: 1px solid #333; }
+        th { color: #888; font-weight: normal; font-size: 11px; }
+        code { background: #2d2d44; padding: 2px 5px; border-radius: 3px; color: #f9a8d4; font-size: 12px; }
+        .hot { color: #fbbf24; font-weight: bold; }
+        .new { color: #34d399; font-weight: bold; }
+        .section { background: #16213e; border-radius: 8px; padding: 10px; margin-bottom: 10px; }
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .decision { background: #1e3a5f; border: 1px solid #3b82f6; }
+        .emergency { background: #3b1219; border: 1px solid #7f1d1d; }
+        .tip { color: #fbbf24; font-style: italic; font-size: 11px; }
+        .subtitle { color: #888; font-size: 11px; margin-bottom: 10px; }
+        .highlight { background: #2d4a3e; border: 1px solid #10b981; padding: 8px; border-radius: 6px; margin: 8px 0; }
+    </style>
+</head>
+<body>
+    <h1>Claude Cowork Cheatsheet - FEDCON Team</h1>
+    <p class="subtitle">Updated: Feb 2026 | For Desktop App users | Different from Claude Code (terminal)</p>
+
+    <div class="section" style="background: #2d2d44; border: 1px solid #a78bfa;">
+        <h2>Cowork vs Claude Code - Different Tools!</h2>
+        <table>
+            <tr><th>Feature</th><th>Cowork (You)</th><th>Claude Code (IT Team)</th></tr>
+            <tr><td>Interface</td><td>Desktop app</td><td>Terminal command</td></tr>
+            <tr><td>Plugins/Skills</td><td>Built-in (Sales, Marketing, etc.)</td><td>Custom ~/.claude/skills/</td></tr>
+            <tr><td>Team sharing</td><td class="hot">Coming soon</td><td>Manual (git)</td></tr>
+        </table>
+        <p class="tip">Brad's custom /problem-solver skills are for Claude Code, not Cowork. Use built-in plugins instead!</p>
+    </div>
+
+    <div class="section decision">
+        <h2>Cowork vs Chat - Which Should I Use?</h2>
+        <table>
+            <tr><th>I need to...</th><th>Use</th></tr>
+            <tr><td>Work with files, documents, proposals</td><td class="hot">Cowork</td></tr>
+            <tr><td>Complex multi-step task</td><td class="hot">Cowork</td></tr>
+            <tr><td>Internet research + file creation</td><td class="hot">Cowork</td></tr>
+            <tr><td>Create Excel/presentations</td><td class="hot">Cowork</td></tr>
+            <tr><td>Quick question, brainstorm</td><td class="new">Chat (claude.ai)</td></tr>
+            <tr><td>Simple conversation</td><td class="new">Chat (claude.ai)</td></tr>
+        </table>
+        <p class="tip">Cowork = agentic (files + internet + plugins). Chat = simple conversation. Cowork uses more tokens.</p>
+    </div>
+
+    <div class="two-col">
+        <div class="section">
+            <h2>Basic Cowork Commands</h2>
+            <table>
+                <tr><td>"List files in projects/"</td><td>See what's there</td></tr>
+                <tr><td>"Read my department page"</td><td>Review your tasks</td></tr>
+                <tr><td>"Update [project] status to In Progress"</td><td>Change status</td></tr>
+                <tr><td>"Add a note to [project]: [note]"</td><td>Add information</td></tr>
+                <tr><td>"What files exist in this folder?"</td><td>Explore structure</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Built-in Plugins (Type / or +)</h2>
+            <table>
+                <tr><td><code>Productivity</code></td><td class="hot">Documents, spreadsheets, slides</td></tr>
+                <tr><td><code>Sales</code></td><td>Proposals, outreach, CRM tasks</td></tr>
+                <tr><td><code>Marketing</code></td><td>Content, campaigns, copy</td></tr>
+                <tr><td><code>Finance</code></td><td>Reports, analysis, budgets</td></tr>
+                <tr><td><code>Legal</code></td><td>Contract review, compliance</td></tr>
+                <tr><td><code>Data</code></td><td>Analysis, visualization</td></tr>
+            </table>
+            <p class="tip">Type / or + to see plugin commands. Team sharing coming soon!</p>
+        </div>
+    </div>
+
+    <div class="section" style="background: #1e3a5f; border: 1px solid #3b82f6;">
+        <h2>Prompt Templates (Copy & Paste)</h2>
+        <p class="tip" style="margin-bottom: 8px;">Copy these, replace [BRACKETED TEXT] with your situation. Full templates in training/Module-6.</p>
+        <table>
+            <tr><th>Template</th><th>Start With</th></tr>
+            <tr><td class="hot">Problem Solver</td><td>"Analyze this problem: [PROBLEM]. Give me 3 solutions with pros/cons, a recommendation, and first 3 steps."</td></tr>
+            <tr><td class="hot">Strategy</td><td>"Develop a strategy for: [GOAL]. Give me 3 options with investment/outcome/risk, a recommendation, roadmap, and quick wins."</td></tr>
+            <tr><td>Process Improve</td><td>"Improve this process: [PROCESS]. Diagnose bottlenecks, give 3 improvements with effort/impact, and automation opportunities."</td></tr>
+            <tr><td>Prompt Optimizer</td><td>"Optimize this prompt: [YOUR PROMPT]. Show me what's wrong and give me a better version."</td></tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>Writing Good Prompts (Context + Task + Constraints)</h2>
+        <div class="highlight">
+            <strong>Example:</strong><br>
+            "I'm writing a proposal for a DoD contract <em>(context)</em>. Write the opening paragraph of the technical approach <em>(task)</em>. Keep it under 200 words and mention our cleared facility <em>(constraints)</em>."
+        </div>
+        <table>
+            <tr><td><strong>Context</strong></td><td>What Claude needs to know about your situation</td></tr>
+            <tr><td><strong>Task</strong></td><td>What you want done (be specific!)</td></tr>
+            <tr><td><strong>Constraints</strong></td><td>Boundaries - length, format, what to include/avoid</td></tr>
+        </table>
+    </div>
+
+    <div class="section decision">
+        <h2>The Expert Frame - Tell Claude What Role to Play</h2>
+        <table>
+            <tr><td>"You are an experienced proposal reviewer..."</td><td>Gets critical feedback</td></tr>
+            <tr><td>"You are a federal contracting expert..."</td><td>Gets compliance focus</td></tr>
+            <tr><td>"You are a marketing strategist..."</td><td>Gets promotional angle</td></tr>
+        </table>
+        <p class="tip">The role you assign changes the type of response you get!</p>
+    </div>
+
+    <div class="two-col">
+        <div class="section emergency">
+            <h2>When Things Go Wrong</h2>
+            <table>
+                <tr><td>Claude confused</td><td>Start a fresh session</td></tr>
+                <tr><td>Same error repeating</td><td>Try a different approach</td></tr>
+                <tr><td>20+ back-and-forths</td><td>Start over with fresh context</td></tr>
+                <tr><td>Output too generic</td><td>Add more specific details</td></tr>
+            </table>
+        </div>
+
+        <div class="section" style="background: #1a3a2e; border: 1px solid #10b981;">
+            <h2>Two-Session Debugging</h2>
+            <p style="margin: 5px 0;">When stuck in Cowork:</p>
+            <ol style="margin-left: 15px; font-size: 12px;">
+                <li>Open Claude.ai in browser (second session)</li>
+                <li>Paste your conversation</li>
+                <li>Ask: "Why isn't this working?"</li>
+            </ol>
+            <p class="tip">Fresh Claude sees problems the stuck Claude can't!</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>The Iteration Loop (Make Claude Improve Its Work)</h2>
+        <table>
+            <tr><td>1.</td><td>Get initial output</td></tr>
+            <tr><td>2.</td><td>"Review this against [criteria]. What's weak?"</td></tr>
+            <tr><td>3.</td><td>"Fix those weaknesses."</td></tr>
+            <tr><td>4.</td><td>"Is this good enough, or what else needs work?"</td></tr>
+        </table>
+        <p class="tip">Don't accept the first draft - have Claude critique and improve it!</p>
+    </div>
+
+    <div class="section">
+        <h2>Common Mistakes to Avoid</h2>
+        <table>
+            <tr><th>Mistake</th><th>Instead, Do This</th></tr>
+            <tr><td>Treating Claude like Google</td><td>Give it specific material to work with</td></tr>
+            <tr><td>Expecting memory between sessions</td><td>Re-provide context each time</td></tr>
+            <tr><td>Giant prompts with everything</td><td>Build up through conversation</td></tr>
+            <tr><td>Saying "make this better"</td><td>Be specific: "Add more examples" or "Shorten to 100 words"</td></tr>
+        </table>
+    </div>
+
+    <div class="section" style="background: #3b1219; border: 1px solid #7f1d1d;">
+        <h2>⚠️ Cowork Safety</h2>
+        <table>
+            <tr><td>Only grant access to work folders</td><td>Not your whole computer</td></tr>
+            <tr><td>Don't give access to sensitive files</td><td>Passwords, credentials, personal docs</td></tr>
+            <tr><td>Monitor what Cowork is doing</td><td>Stop if it accesses unexpected things</td></tr>
+        </table>
+        <p class="tip">You're responsible for Cowork's actions. Review before it publishes or modifies data.</p>
+    </div>
+
+    <div class="section">
+        <h2>Obsidian Vault Structure (Where Things Live)</h2>
+        <table>
+            <tr><td><code>FEDCON-HQ.md</code></td><td class="hot">Start here - main dashboard</td></tr>
+            <tr><td><code>departments/</code></td><td>Your department page</td></tr>
+            <tr><td><code>projects/</code></td><td>Project details and tasks</td></tr>
+            <tr><td><code>systems/</code></td><td>How things work</td></tr>
+            <tr><td><code>daily-logs/</code></td><td>Automatic activity logs</td></tr>
+        </table>
+    </div>
+
+    <div class="section" style="background: #2d2d44;">
+        <h2>Getting Help</h2>
+        <table>
+            <tr><td>Stuck on prompting?</td><td>Ask Claude: "How should I phrase this prompt?"</td></tr>
+            <tr><td>Cowork not working?</td><td>Use two-session debugging technique</td></tr>
+            <tr><td>Need human help?</td><td>Send question to Brad via Google Chat</td></tr>
+        </table>
+    </div>
+
+</body>
+</html>

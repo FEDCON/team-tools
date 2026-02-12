@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Claude Code Cheatsheet - FEDCON</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro', sans-serif;
+            background: #1a1a2e;
+            color: #eee;
+            padding: 15px;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+        h1 { font-size: 16px; color: #a78bfa; margin-bottom: 10px; }
+        h2 { font-size: 13px; color: #60a5fa; margin: 12px 0 6px 0; border-bottom: 1px solid #333; padding-bottom: 3px; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 8px; }
+        td, th { padding: 4px 8px; text-align: left; border-bottom: 1px solid #333; }
+        th { color: #888; font-weight: normal; font-size: 11px; }
+        code { background: #2d2d44; padding: 2px 5px; border-radius: 3px; color: #f9a8d4; font-size: 12px; }
+        .hot { color: #fbbf24; font-weight: bold; }
+        .new { color: #34d399; font-weight: bold; }
+        .section { background: #16213e; border-radius: 8px; padding: 10px; margin-bottom: 10px; }
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+        .emergency { background: #3b1219; border: 1px solid #7f1d1d; }
+        .framework { background: #1e3a5f; border: 1px solid #3b82f6; }
+        kbd { background: #374151; padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 11px; }
+        .subtitle { color: #888; font-size: 11px; margin-bottom: 10px; }
+        .tip { color: #fbbf24; font-style: italic; font-size: 11px; }
+    </style>
+</head>
+<body>
+    <h1>Claude Code Cheatsheet - FEDCON</h1>
+    <p class="subtitle">Updated: Feb 2026 | For TERMINAL users (Brad, Dylan, Jaya, Deep) | Skills: ~/.claude/skills/</p>
+
+    <div class="section framework">
+        <h2>Process Structure (Use These!)</h2>
+        <table>
+            <tr><td><code>/learn [topic]</code></td><td class="new">Teaching mode - explains WHY, creates diagrams</td></tr>
+            <tr><td><code>/coach</code></td><td class="new">Analyzes your process - catches rabbit holes</td></tr>
+            <tr><td><code>/checkpoint</code></td><td>Save state to Obsidian before switching</td></tr>
+            <tr><td><code>/vault-check</code></td><td>Check for duplicates before creating files</td></tr>
+            <tr><td><code>"use subagents"</code></td><td class="hot">Say this for heavy/parallel tasks</td></tr>
+            <tr><td><code>"plan mode first"</code></td><td class="hot">Say this for complex multi-step projects</td></tr>
+        </table>
+    </div>
+
+    <div class="two-col">
+        <div class="section">
+            <h2>Your Skills (Terminal Only)</h2>
+            <p class="tip" style="margin-bottom: 6px;">These are in ~/.claude/skills/ - NOT available in Cowork!</p>
+            <table>
+                <tr><td><code>/hubspot-bulk-safe</code></td><td class="hot">Required for bulk ops!</td></tr>
+                <tr><td><code>/problem-solver</code></td><td class="new">Multi-solution analysis</td></tr>
+                <tr><td><code>/strategy</code></td><td class="new">Business/marketing strategy</td></tr>
+                <tr><td><code>/process-improve</code></td><td class="new">Optimize workflows</td></tr>
+                <tr><td><code>/client-handoff</code></td><td>Client transfer docs</td></tr>
+                <tr><td><code>/build-review</code></td><td class="new">Phase gate — check conflicts + future risks</td></tr>
+                <tr><td><code>/reflect</code></td><td class="new">Capture learnings (auto on stop)</td></tr>
+                <tr><td><code>/intel</code></td><td class="new">Pattern detection + decision review + agent gaps</td></tr>
+                <tr><td><code>/agent-factory</code></td><td class="new">Detect gaps & create new agents</td></tr>
+                <tr><td><code>/agent-update</code></td><td class="new">Refine existing agents from learnings</td></tr>
+                <tr><td><code>/evolve</code></td><td class="hot">Full evolution cycle — detect, propose, build</td></tr>
+                <tr><td><code>/strategic-compact</code></td><td>Smart compaction</td></tr>
+                <tr><td><code>/community-scan</code></td><td class="new">Scan repos for new techniques (monthly)</td></tr>
+                <tr><td><code>/morning-recap</code></td><td class="hot">Daily briefing — adoption, health, priorities</td></tr>
+                <tr><td><code>/profile-deploy</code></td><td class="new">Deploy role config to team member</td></tr>
+                <tr><td><code>/content-research-writer</code></td><td>Proposals & docs</td></tr>
+                <tr><td><code>/meeting-insights-analyzer</code></td><td>Call analysis</td></tr>
+                <tr><td><code>/validate-idea</code></td><td class="new">Multi-persona idea validation + PMF scoring</td></tr>
+                <tr><td><code>/analyze-document</code></td><td class="new">Business doc analysis — RFPs, reports, contracts</td></tr>
+                <tr><td><code>/debrief</code></td><td class="hot">Morning team briefing — consolidated highlights</td></tr>
+                <tr><td><code>/delegate</code></td><td class="new">Run task on Dylan's machine (his API usage)</td></tr>
+                <tr><td><code>/assign-task</code></td><td class="new">Push project to team member via FedBot DM</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Keyboard</h2>
+            <table>
+                <tr><td><kbd>Shift</kbd>+<kbd>Tab</kbd></td><td class="hot">Toggle Plan Mode</td></tr>
+                <tr><td><kbd>Ctrl</kbd>+<kbd>C</kbd></td><td>Cancel generation</td></tr>
+                <tr><td><kbd>Ctrl</kbd>+<kbd>B</kbd></td><td>Background task</td></tr>
+                <tr><td><kbd>Esc</kbd> <kbd>Esc</kbd></td><td>Rewind</td></tr>
+                <tr><td><kbd>Option</kbd>+<kbd>T</kbd></td><td>Toggle thinking</td></tr>
+                <tr><td><kbd>Option</kbd>+<kbd>P</kbd></td><td>Switch model</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Essential Commands</h2>
+        <table>
+            <tr><td><code>/plan</code></td><td class="hot">Plan mode - research only, no execution</td></tr>
+            <tr><td><code>/compact [focus]</code></td><td>Compress conversation, keep specified focus</td></tr>
+            <tr><td><code>/context</code></td><td>Visual context usage grid</td></tr>
+            <tr><td><code>/resume</code></td><td>Resume past session</td></tr>
+            <tr><td><code>/rewind</code></td><td>Undo conversation + code</td></tr>
+            <tr><td><code>/clear</code></td><td>Fresh start</td></tr>
+        </table>
+    </div>
+
+    <div class="section framework">
+        <h2>When You're Stuck or Frustrated</h2>
+        <p class="tip">These patterns mean you need structure:</p>
+        <table>
+            <tr><th>Pattern</th><th>Fix</th></tr>
+            <tr><td>One decision leads to another...</td><td>Say <code>/coach</code> or "we're going down a rabbit hole"</td></tr>
+            <tr><td>Complex project, unclear scope</td><td>Start with <code>/plan</code> or <kbd>Shift</kbd>+<kbd>Tab</kbd></td></tr>
+            <tr><td>Don't understand the system</td><td><code>/learn [topic]</code> before building</td></tr>
+            <tr><td>Heavy data processing</td><td>Say "use subagents"</td></tr>
+            <tr><td>Mediocre first attempt</td><td>Say "try again from scratch"</td></tr>
+        </table>
+    </div>
+
+    <div class="section" style="background: #1a3a2e; border: 1px solid #10b981;">
+        <h2>🔒 Active Hooks (16 Registered - Cannot Bypass)</h2>
+        <p class="tip">These run automatically. Claude cannot override them.</p>
+        <table>
+            <tr><th>Hook</th><th>What It Does</th></tr>
+            <tr><td class="new">bash-safety-guard</td><td>Mega-hook: credential leaks, Gmail sends, HubSpot checks, dangerous cmds</td></tr>
+            <tr><td class="new">block-write-existing</td><td>Write tool on existing files → must use Edit</td></tr>
+            <tr><td class="new">block-secrets-access</td><td>.env files, credentials, SSH keys</td></tr>
+            <tr><td class="new">file-shrinkage-guard</td><td>Blocks Edit removing >60% of content</td></tr>
+            <tr><td class="new">google-admin-safety</td><td>Confirmation gate on user suspend/add/update</td></tr>
+            <tr><td class="new">hubspot-deploy-confirmation</td><td>Blocks HubSpot project upload/deploy</td></tr>
+            <tr><td class="new">obsidian-duplicate-check</td><td>Blocks Write if similar file exists in vault</td></tr>
+            <tr><td class="new">hubspot-null-rate-warning</td><td>Warns on >50% null properties in HubSpot responses</td></tr>
+            <tr><td class="new">obsidian-auto-commit</td><td>Auto git commit after vault Edit/Write</td></tr>
+            <tr><td class="new">cheatsheet-update-reminder</td><td>Reminds to update cheatsheet after skill/hook changes</td></tr>
+            <tr><td class="new">verify-before-done</td><td>Blocks stop if no test ran OR no learnings captured</td></tr>
+            <tr><td class="new">session-start-context</td><td>Auto-loads checkpoint + intelligence briefing</td></tr>
+            <tr><td class="new">hubspot-freshness-check</td><td>Warns on session start if HubSpot docs >14 days stale</td></tr>
+            <tr><td class="new">hubspot-api-guard</td><td>Blocks deprecated HubSpot API endpoints (reads registry JSON)</td></tr>
+            <tr><td class="new">hubspot-doc-edit-verify</td><td>Reminds to update freshness metadata after HubSpot doc edits</td></tr>
+            <tr><td class="new">notification-desktop</td><td>macOS alert + sound when Claude needs you</td></tr>
+        </table>
+        <p style="margin-top: 6px; font-size: 11px; color: #888;">Config: <code>~/.claude/settings.json</code> | Scripts: <code>~/.claude/hooks/</code> | Docs: <code>systems/claude-hooks.md</code></p>
+    </div>
+
+    <div class="two-col">
+        <div class="section">
+            <h2>Reference Data (Obsidian)</h2>
+            <table>
+                <tr><td>HubSpot</td><td><code>systems/hubspot-api.md</code></td></tr>
+                <tr><td>MCP</td><td><code>systems/mcp-connectors.md</code></td></tr>
+                <tr><td>Google</td><td><code>systems/google-workspace-scopes.md</code></td></tr>
+                <tr><td>Notion</td><td><code>systems/notion-databases.md</code></td></tr>
+                <tr><td class="new">Hooks</td><td><code>systems/claude-hooks.md</code></td></tr>
+            </table>
+        </div>
+
+        <div class="section emergency">
+            <h2>Emergency</h2>
+            <table>
+                <tr><td>Off rails</td><td><code>/rewind</code></td></tr>
+                <tr><td>Undo files</td><td><code>git checkout [file]</code></td></tr>
+                <tr><td>Context full</td><td><code>/checkpoint</code> → <code>/compact</code></td></tr>
+                <tr><td>Won't stop</td><td><kbd>Ctrl</kbd>+<kbd>C</kbd></td></tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="section" style="background: #1a2e3a; border: 1px solid #0ea5e9;">
+        <h2>Subagents (8 agents, all with memory)</h2>
+        <p class="tip">In <code>~/.claude/agents/</code> — auto-delegated based on task type</p>
+        <table>
+            <tr><th>Agent</th><th>Model</th><th>What It Does</th></tr>
+            <tr><td class="new">hubspot-auditor</td><td>sonnet</td><td>CRM data quality audit (read-only)</td></tr>
+            <tr><td class="new">hubspot-operator</td><td class="hot">opus</td><td>CRM writes — deals, workflows, bulk ops</td></tr>
+            <tr><td class="new">google-workspace-admin</td><td>sonnet</td><td>Users, security, OUs, devices (ABM/MDM)</td></tr>
+            <tr><td class="new">integration-debugger</td><td class="hot">opus</td><td>Cross-system auth/API troubleshooting</td></tr>
+            <tr><td class="new">sales-analytics</td><td>sonnet</td><td>Meeting analysis, no-shows, pipeline velocity</td></tr>
+            <tr><td class="new">security-auditor</td><td>sonnet</td><td>Credentials, hooks, permissions (read-only)</td></tr>
+            <tr><td>obsidian-researcher</td><td>haiku</td><td>Vault search & research compilation</td></tr>
+            <tr><td class="hot">strategic-context</td><td>sonnet</td><td>Cross-project alignment — prevents local optimization</td></tr>
+        </table>
+        <p style="margin-top: 6px; font-size: 11px; color: #888;">Memory: <code>~/.claude/agent-memory/{name}/</code> | Docs: <code>_systems/agent-system.md</code> | Create new: <code>/agent-factory</code></p>
+    </div>
+
+    <div class="section" style="background: #1a2e1a; border: 1px solid #22c55e;">
+        <h2>Operational Intelligence System (NEW)</h2>
+        <p class="tip">Auto-learning loop — captures insights, detects patterns, tracks decisions</p>
+        <table>
+            <tr><th>Component</th><th>What It Does</th></tr>
+            <tr><td class="new">Auto-reflect on stop</td><td>Captures learnings when session had real work</td></tr>
+            <tr><td class="new">Intel briefing on start</td><td>Shows follow-ups, learnings, patterns at session start</td></tr>
+            <tr><td class="new">/intel auto-run</td><td>Pattern detection runs if 3+ days stale</td></tr>
+            <tr><td class="new">Enrichment nag email</td><td>Daily 7AM check — emails Brad when input needed</td></tr>
+        </table>
+        <p style="margin-top: 6px; font-size: 11px; color: #888;">Data: <code>obsidian-fedcon-brain/_intelligence/</code> | Learnings, follow-ups, decisions, patterns</p>
+    </div>
+
+    <div class="section" style="background: #2e1a3a; border: 1px solid #a855f7;">
+        <h2>Agent Evolution System (NEW)</h2>
+        <p class="tip">Self-improving loop — agents get smarter from operational experience</p>
+        <table>
+            <tr><th>Component</th><th>What It Does</th></tr>
+            <tr><td class="hot">/evolve</td><td>Full evolution cycle — detect gaps, propose, build</td></tr>
+            <tr><td class="new">/agent-update</td><td>Refine single agent from learnings + patterns</td></tr>
+            <tr><td class="new">evolution-log.md</td><td>Changelog for all agent system changes</td></tr>
+            <tr><td class="new">/community-scan</td><td>Scan repos for new techniques (monthly)</td></tr>
+            <tr><td class="new">community-catalog.md</td><td>Cached community research (saves tokens)</td></tr>
+            <tr><td class="new">Auto-staleness in /intel</td><td>Detects when agents need updating</td></tr>
+            <tr><td class="new">Session start reminder</td><td>Nudges /evolve if 30+ days stale</td></tr>
+        </table>
+        <p style="margin-top: 6px; font-size: 11px; color: #888;">Run <code>/evolve</code> monthly | Data: <code>_intelligence/evolution-log.md</code> | Sources: <code>_systems/community-catalog.md</code></p>
+    </div>
+
+    <div class="section" style="background: #1a2e2e; border: 1px solid #14b8a6;">
+        <h2>Team Profiles (Role-Based Config)</h2>
+        <p class="tip">Each team member gets tailored agents, skills, and permissions</p>
+        <table>
+            <tr><th>Profile</th><th>User</th><th>Access Level</th></tr>
+            <tr><td class="hot">brad-ceo</td><td>Brad</td><td>Full — all agents, skills, evolution</td></tr>
+            <tr><td class="new">dylan-it</td><td>Dylan</td><td>IT — Google Admin, security, integrations</td></tr>
+            <tr><td class="new">tyler-bizdev</td><td>Tyler</td><td>Sales — analytics, meetings, CRM read-only</td></tr>
+            <tr><td class="new">intern-restricted</td><td>Jaya, Deep</td><td>Learning — Obsidian research only</td></tr>
+        </table>
+        <p style="margin-top: 6px; font-size: 11px; color: #888;">Deploy: <code>/profile-deploy [name]</code> | Profiles: <code>_systems/profiles/</code> | Playbook: <code>_systems/brads-claude-playbook.md</code></p>
+    </div>
+
+    <div class="section" style="background: #1e3a5f;">
+        <h2>When Claude Bulldozes</h2>
+        <p style="margin: 5px 0;"><kbd>Shift</kbd>+<kbd>Tab</kbd> → Toggles Plan Mode (Claude can only research, not execute)</p>
+        <p style="margin: 5px 0;">Or say: <em>"Stop. Let's use /plan and discuss options first."</em></p>
+    </div>
+
+</body>
+</html>
