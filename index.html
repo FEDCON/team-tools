@@ -28,6 +28,9 @@
         kbd { background: #374151; padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 11px; }
         .subtitle { color: #888; font-size: 11px; margin-bottom: 10px; }
         .tip { color: #fbbf24; font-style: italic; font-size: 11px; }
+        .last-used { color: #888; font-size: 11px; white-space: nowrap; }
+        .last-used .user { color: #a78bfa; }
+        .last-used .time { color: #60a5fa; }
     </style>
 </head>
 <body>
@@ -37,12 +40,13 @@
     <div class="section framework">
         <h2>Process Structure (Use These!)</h2>
         <table>
-            <tr><td><code>/learn [topic]</code></td><td class="new">Teaching mode - explains WHY, creates diagrams</td></tr>
-            <tr><td><code>/coach</code></td><td class="new">Analyzes your process - catches rabbit holes</td></tr>
-            <tr><td><code>/checkpoint</code></td><td>Save state to Obsidian before switching</td></tr>
-            <tr><td><code>/vault-check</code></td><td>Check for duplicates before creating files</td></tr>
-            <tr><td><code>"use subagents"</code></td><td class="hot">Say this for heavy/parallel tasks</td></tr>
-            <tr><td><code>"plan mode first"</code></td><td class="hot">Say this for complex multi-step projects</td></tr>
+            <tr><th>Skill</th><th>What</th><th>Last Used</th></tr>
+            <tr data-skill="learn"><td><code>/learn [topic]</code></td><td class="new">Teaching mode - explains WHY, creates diagrams</td><td class="last-used">--</td></tr>
+            <tr data-skill="coach"><td><code>/coach</code></td><td class="new">Analyzes your process - catches rabbit holes</td><td class="last-used">--</td></tr>
+            <tr data-skill="checkpoint"><td><code>/checkpoint</code></td><td>Save state to Obsidian before switching</td><td class="last-used">--</td></tr>
+            <tr data-skill="vault-check"><td><code>/vault-check</code></td><td>Check for duplicates before creating files</td><td class="last-used">--</td></tr>
+            <tr><td><code>"use subagents"</code></td><td class="hot">Say this for heavy/parallel tasks</td><td></td></tr>
+            <tr><td><code>"plan mode first"</code></td><td class="hot">Say this for complex multi-step projects</td><td></td></tr>
         </table>
     </div>
 
@@ -51,28 +55,29 @@
             <h2>Your Skills (Terminal Only)</h2>
             <p class="tip" style="margin-bottom: 6px;">These are in ~/.claude/skills/ - NOT available in Cowork!</p>
             <table>
-                <tr><td><code>/hubspot-bulk-safe</code></td><td class="hot">Required for bulk ops!</td></tr>
-                <tr><td><code>/problem-solver</code></td><td class="new">Multi-solution analysis</td></tr>
-                <tr><td><code>/strategy</code></td><td class="new">Business/marketing strategy</td></tr>
-                <tr><td><code>/process-improve</code></td><td class="new">Optimize workflows</td></tr>
-                <tr><td><code>/client-handoff</code></td><td>Client transfer docs</td></tr>
-                <tr><td><code>/build-review</code></td><td class="new">Phase gate — check conflicts + future risks</td></tr>
-                <tr><td><code>/reflect</code></td><td class="new">Capture learnings (auto on stop)</td></tr>
-                <tr><td><code>/intel</code></td><td class="new">Pattern detection + decision review + agent gaps</td></tr>
-                <tr><td><code>/agent-factory</code></td><td class="new">Detect gaps & create new agents</td></tr>
-                <tr><td><code>/agent-update</code></td><td class="new">Refine existing agents from learnings</td></tr>
-                <tr><td><code>/evolve</code></td><td class="hot">Full evolution cycle — detect, propose, build</td></tr>
-                <tr><td><code>/strategic-compact</code></td><td>Smart compaction</td></tr>
-                <tr><td><code>/community-scan</code></td><td class="new">Scan repos for new techniques (monthly)</td></tr>
-                <tr><td><code>/morning-recap</code></td><td class="hot">Daily briefing — adoption, health, priorities</td></tr>
-                <tr><td><code>/profile-deploy</code></td><td class="new">Deploy role config to team member</td></tr>
-                <tr><td><code>/content-research-writer</code></td><td>Proposals & docs</td></tr>
-                <tr><td><code>/meeting-insights-analyzer</code></td><td>Call analysis</td></tr>
-                <tr><td><code>/validate-idea</code></td><td class="new">Multi-persona idea validation + PMF scoring</td></tr>
-                <tr><td><code>/analyze-document</code></td><td class="new">Business doc analysis — RFPs, reports, contracts</td></tr>
-                <tr><td><code>/debrief</code></td><td class="hot">Morning team briefing — consolidated highlights</td></tr>
-                <tr><td><code>/delegate</code></td><td class="new">Run task on Dylan's machine (his API usage)</td></tr>
-                <tr><td><code>/assign-task</code></td><td class="new">Push project to team member via FedBot DM</td></tr>
+                <tr><th>Skill</th><th>What</th><th>Last Used</th></tr>
+                <tr data-skill="hubspot-bulk-safe"><td><code>/hubspot-bulk-safe</code></td><td class="hot">Required for bulk ops!</td><td class="last-used">--</td></tr>
+                <tr data-skill="problem-solver"><td><code>/problem-solver</code></td><td class="new">Multi-solution analysis</td><td class="last-used">--</td></tr>
+                <tr data-skill="strategy"><td><code>/strategy</code></td><td class="new">Business/marketing strategy</td><td class="last-used">--</td></tr>
+                <tr data-skill="process-improve"><td><code>/process-improve</code></td><td class="new">Optimize workflows</td><td class="last-used">--</td></tr>
+                <tr data-skill="client-handoff"><td><code>/client-handoff</code></td><td>Client transfer docs</td><td class="last-used">--</td></tr>
+                <tr data-skill="build-review"><td><code>/build-review</code></td><td class="new">Phase gate — check conflicts + future risks</td><td class="last-used">--</td></tr>
+                <tr data-skill="reflect"><td><code>/reflect</code></td><td class="new">Capture learnings (auto on stop)</td><td class="last-used">--</td></tr>
+                <tr data-skill="intel"><td><code>/intel</code></td><td class="new">Pattern detection + decision review + agent gaps</td><td class="last-used">--</td></tr>
+                <tr data-skill="agent-factory"><td><code>/agent-factory</code></td><td class="new">Detect gaps & create new agents</td><td class="last-used">--</td></tr>
+                <tr data-skill="agent-update"><td><code>/agent-update</code></td><td class="new">Refine existing agents from learnings</td><td class="last-used">--</td></tr>
+                <tr data-skill="evolve"><td><code>/evolve</code></td><td class="hot">Full evolution cycle — detect, propose, build</td><td class="last-used">--</td></tr>
+                <tr data-skill="strategic-compact"><td><code>/strategic-compact</code></td><td>Smart compaction</td><td class="last-used">--</td></tr>
+                <tr data-skill="community-scan"><td><code>/community-scan</code></td><td class="new">Scan repos for new techniques (monthly)</td><td class="last-used">--</td></tr>
+                <tr data-skill="morning-recap"><td><code>/morning-recap</code></td><td class="hot">Daily briefing — adoption, health, priorities</td><td class="last-used">--</td></tr>
+                <tr data-skill="profile-deploy"><td><code>/profile-deploy</code></td><td class="new">Deploy role config to team member</td><td class="last-used">--</td></tr>
+                <tr data-skill="content-research-writer"><td><code>/content-research-writer</code></td><td>Proposals & docs</td><td class="last-used">--</td></tr>
+                <tr data-skill="meeting-insights-analyzer"><td><code>/meeting-insights-analyzer</code></td><td>Call analysis</td><td class="last-used">--</td></tr>
+                <tr data-skill="validate-idea"><td><code>/validate-idea</code></td><td class="new">Multi-persona idea validation + PMF scoring</td><td class="last-used">--</td></tr>
+                <tr data-skill="analyze-document"><td><code>/analyze-document</code></td><td class="new">Business doc analysis — RFPs, reports, contracts</td><td class="last-used">--</td></tr>
+                <tr data-skill="debrief"><td><code>/debrief</code></td><td class="hot">Morning team briefing — consolidated highlights</td><td class="last-used">--</td></tr>
+                <tr data-skill="delegate"><td><code>/delegate</code></td><td class="new">Run task on Dylan's machine (his API usage)</td><td class="last-used">--</td></tr>
+                <tr data-skill="assign-task"><td><code>/assign-task</code></td><td class="new">Push project to team member via FedBot DM</td><td class="last-used">--</td></tr>
             </table>
         </div>
 
@@ -166,15 +171,15 @@
         <h2>Subagents (8 agents, all with memory)</h2>
         <p class="tip">In <code>~/.claude/agents/</code> — auto-delegated based on task type</p>
         <table>
-            <tr><th>Agent</th><th>Model</th><th>What It Does</th></tr>
-            <tr><td class="new">hubspot-auditor</td><td>sonnet</td><td>CRM data quality audit (read-only)</td></tr>
-            <tr><td class="new">hubspot-operator</td><td class="hot">opus</td><td>CRM writes — deals, workflows, bulk ops</td></tr>
-            <tr><td class="new">google-workspace-admin</td><td>sonnet</td><td>Users, security, OUs, devices (ABM/MDM)</td></tr>
-            <tr><td class="new">integration-debugger</td><td class="hot">opus</td><td>Cross-system auth/API troubleshooting</td></tr>
-            <tr><td class="new">sales-analytics</td><td>sonnet</td><td>Meeting analysis, no-shows, pipeline velocity</td></tr>
-            <tr><td class="new">security-auditor</td><td>sonnet</td><td>Credentials, hooks, permissions (read-only)</td></tr>
-            <tr><td>obsidian-researcher</td><td>haiku</td><td>Vault search & research compilation</td></tr>
-            <tr><td class="hot">strategic-context</td><td>sonnet</td><td>Cross-project alignment — prevents local optimization</td></tr>
+            <tr><th>Agent</th><th>Model</th><th>What It Does</th><th>Last Used</th></tr>
+            <tr data-agent="hubspot-auditor"><td class="new">hubspot-auditor</td><td>sonnet</td><td>CRM data quality audit (read-only)</td><td class="last-used">--</td></tr>
+            <tr data-agent="hubspot-operator"><td class="new">hubspot-operator</td><td class="hot">opus</td><td>CRM writes — deals, workflows, bulk ops</td><td class="last-used">--</td></tr>
+            <tr data-agent="google-workspace-admin"><td class="new">google-workspace-admin</td><td>sonnet</td><td>Users, security, OUs, devices (ABM/MDM)</td><td class="last-used">--</td></tr>
+            <tr data-agent="integration-debugger"><td class="new">integration-debugger</td><td class="hot">opus</td><td>Cross-system auth/API troubleshooting</td><td class="last-used">--</td></tr>
+            <tr data-agent="sales-analytics"><td class="new">sales-analytics</td><td>sonnet</td><td>Meeting analysis, no-shows, pipeline velocity</td><td class="last-used">--</td></tr>
+            <tr data-agent="security-auditor"><td class="new">security-auditor</td><td>sonnet</td><td>Credentials, hooks, permissions (read-only)</td><td class="last-used">--</td></tr>
+            <tr data-agent="obsidian-researcher"><td>obsidian-researcher</td><td>haiku</td><td>Vault search & research compilation</td><td class="last-used">--</td></tr>
+            <tr data-agent="strategic-context"><td class="hot">strategic-context</td><td>sonnet</td><td>Cross-project alignment — prevents local optimization</td><td class="last-used">--</td></tr>
         </table>
         <p style="margin-top: 6px; font-size: 11px; color: #888;">Memory: <code>~/.claude/agent-memory/{name}/</code> | Docs: <code>_systems/agent-system.md</code> | Create new: <code>/agent-factory</code></p>
     </div>
@@ -227,5 +232,41 @@
         <p style="margin: 5px 0;">Or say: <em>"Stop. Let's use /plan and discuss options first."</em></p>
     </div>
 
+<script>
+(function() {
+  const ENDPOINT = 'https://us-central1-fedcon-claude-mcp.cloudfunctions.net/skill-usage-tracker';
+
+  function relativeTime(iso) {
+    const now = Date.now(), then = new Date(iso).getTime();
+    const diff = Math.floor((now - then) / 1000);
+    if (diff < 60) return 'just now';
+    if (diff < 3600) return Math.floor(diff / 60) + 'm ago';
+    if (diff < 86400) return Math.floor(diff / 3600) + 'h ago';
+    if (diff < 172800) return 'yesterday';
+    const d = new Date(iso);
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  }
+
+  fetch(ENDPOINT)
+    .then(r => r.json())
+    .then(data => {
+      document.querySelectorAll('[data-skill]').forEach(row => {
+        const key = 'skill:' + row.dataset.skill;
+        const cell = row.querySelector('.last-used');
+        if (data[key] && cell) {
+          cell.innerHTML = '<span class="user">' + data[key].user + '</span> <span class="time">' + relativeTime(data[key].timestamp) + '</span>';
+        }
+      });
+      document.querySelectorAll('[data-agent]').forEach(row => {
+        const key = 'agent:' + row.dataset.agent;
+        const cell = row.querySelector('.last-used');
+        if (data[key] && cell) {
+          cell.innerHTML = '<span class="user">' + data[key].user + '</span> <span class="time">' + relativeTime(data[key].timestamp) + '</span>';
+        }
+      });
+    })
+    .catch(() => {}); // silently fail — cheatsheet works without tracking
+})();
+</script>
 </body>
 </html>
